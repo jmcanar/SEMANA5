@@ -43,3 +43,23 @@ function deleteSelectedImage() {
     alert('No hay imagen seleccionada.');
     return;
   }
+   // Animación al eliminar
+  selectedImage.style.transition = 'opacity 0.5s';
+  selectedImage.style.opacity = '0';
+
+  setTimeout(() => {
+    selectedImage.remove();
+    selectedImage = null;
+  }, 500);
+}
+
+// Eventos de botones
+addImageButton.addEventListener('click', addImage);
+deleteImageButton.addEventListener('click', deleteSelectedImage);
+
+// Evento input para "Enter" en el campo
+imageUrlInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    addImage();
+  }
+});
